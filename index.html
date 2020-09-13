@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoped-css example</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital@1&display=swap" rel="stylesheet">
+    <script src="scoped-css.js" defer></script>
+
+    <style>
+        body {
+            --primary: #ff993a;
+            margin: 0;
+            font-family: 'DM Mono', monospace;
+        }
+
+        .wrapper {
+            padding-left: calc((100vw - 800px) / 2);
+            padding-right: calc((100vw - 800px) / 2);
+        }
+
+        var {
+            color: var(--primary);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header class="wrapper">
+        <h1>This is a example of the scoped-css.js</h1>
+
+        <style scoped>
+            #this {
+                background: black;
+            }
+
+            h1 {
+                color: white;
+
+                margin: 0;
+                padding: 10px 0;
+
+                font-size: 1.5em;
+            }
+        </style>
+    </header>
+
+    <div class="wrapper">
+        <h1>How to scope your styles?</h1>
+        <p>The <var>scoped</var> attribute will automatically scope your css to the appropriate parent.</p>
+        <div class="code">
+            <code>
+                &lt;style scoped&gt; <br>
+                <div class="padding-left">h1 {<br>
+                    <div class="padding-left">color: white;</div>
+                }</div>
+                &lt;/style&gt; <br>
+            </code>
+        </div>
+        <h1>Alternatively</h1>
+        <p>You can set the attribute <var>scoped</var> to whatever you like. For example:</p>
+        <div class="code">
+            <code>
+                &lt;style scope="#test"&gt; <br>
+                <div class="padding-left">p {<br>
+                    <div class="padding-left">font-weight: bold;</div>
+                }</div>
+                &lt;/style&gt; <br>
+            </code>
+        </div>
+
+        <h1>Scope parent</h1>
+        <p>You can also use this to scope the parent element it self using <var>#this</var></p>
+
+        <div class="code">
+            <code>
+                &lt;style scoped&gt; <br>
+                <div class="padding-left">#this {<br>
+                    <div class="padding-left">background: black;</div>
+                }</div>
+                &lt;/style&gt; <br>
+            </code>
+        </div>
+
+        <style scope=".code">
+            #this {
+                background: black;
+                color: white;
+
+                padding: 20px 50px;
+
+                border-radius: 5px;
+            }
+
+            .padding-left {
+                padding-left: 20px;
+            }
+        </style>
+
+        <style scoped>
+            h1 {
+                margin: 45px 0;
+                position: relative;
+                color: var(--primary);
+            }
+
+            h1::after {
+                content: '';
+
+                position: absolute;
+
+                left: 0;
+                bottom: -10px;
+
+                width: 20%;
+                height: 5px;
+
+                background: var(--primary);
+            }
+        </style>
+    </div>
+</body>
+</html>

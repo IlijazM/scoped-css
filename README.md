@@ -2,6 +2,8 @@
 
 scoped-css-js automatically scopes your css client-side.
 
+[Example page](https://ilijazm.github.io/scoped-css-js)
+
 ## Install
 
 Add this to your head
@@ -70,7 +72,7 @@ scopeStyles(element)
 This will scan for style elements with the ``scoped`` or ``scope`` attribute on the parent element ``element`` and apply the scope to it.
 
 ```javascript
-scopeAllElements()
+scopeAllStyles()
 ```
 
-This will scan for style elements with the ``scoped`` or ``scope`` attribute on the parent element ``element`` and apply the scope to it.
+This will scan for style elements with the ``scoped`` or ``scope`` attribute in the entire document and apply the scope to it.
